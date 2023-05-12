@@ -42,12 +42,12 @@ const userSchema= new mongoose.Schema({
 
 //  Create a virtual 'friendCount' that retrieves the length 
 //      of the user's friends array field on query
-
+const User = mongoose.model("User", userSchema);
 userSchema.virtual('friendCount').get(function () {
-    return this.user.length;
+    return this.friends.length;
   });
 
   // Initialize our User model
-const User = model('user', userSchema);
+
 
 module.exports = User;
