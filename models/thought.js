@@ -35,12 +35,12 @@ const reactionSchema = new mongoose.Schema({
     },
     reactionBody:{
         type: String,
-        // required: true,
+        required: true,
         maxLength: 280,
     },
     username:{
         type: String,
-        // required: true
+        required: true
     },
     createdAt:{
         type: Date,
