@@ -37,7 +37,6 @@ const thoughtSchema = new mongoose.Schema({
 
     reactions: [
       { 
-  type: String,
   type: reactionSchema
 
       }

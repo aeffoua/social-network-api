@@ -25,8 +25,11 @@ router.route('/:thoughtId')
     .put(updateThought)
     .delete(deleteThought);
 
-    router.route('/reactions')
+router.route('/reactions')
     .post(createReaction)
+    .delete(deleteReaction);
+
+router.route('/reactions/:thoughtId/:reactionId')
     .delete(deleteReaction);
 
 

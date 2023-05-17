@@ -100,31 +100,29 @@ module.exports={
 
  //Delete a reaction
  deleteReaction(req, res) {
-  console.log('you deleted a reaction',JSON.stringify(req.body));
-  return res.json ({message: "OK"})
-  // Thought.findByIdAndUpdate(
-  //   req.body.thoughtId,
-  //   {$pull:{reactions:{_id: req.body.reactionId}}}
-  // )
-  //   .then((dbThoughtData) =>{
-  //     if(!dbThoughtData)
-  //       res.status(404)
-  //         .json({ message: 'No reaction with that ID' })
-  //     Reaction.findByIdAndDelete(req.body.reactionId)
-  //       .then((reactionData)=>
-  //         reactionData ? res.json({message:"reaction successfully deleted!"}): res.status(404).json({message:"no reaction with that id"})
-  //       )
-  //       .catch((err) => {
-  //         console.log(err)
-  //         res.status(500).json(err)
-  //       });
-  //   }
+  Thought.findByIdAndUpdate(
+    req.params.thoughtId,
+    {$pull:{reactions:{_id: req.params.reactionId}}}
+  )
+    .then((dbThoughtData) =>{
+      if(!dbThoughtData)
+        res.status(404)
+          .json({ message: 'No reaction with that ID' })
+      Reaction.findByIdAndDelete(req.params.reactionId)
+        .then((reactionData)=>
+          reactionData ? res.json({message:"reaction successfully deleted!"}): res.status(404).json({message:"no reaction with that id"})
+        )
+        .catch((err) => {
+          console.log(err)
+          res.status(500).json(err)
+        });
+    }
       
-  //   )
-  //   .catch((err) => {
-  //     console.log(err)
-  //     res.status(500).json(err)
-  //   });
+    )
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    });
 },
 
 
