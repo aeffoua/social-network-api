@@ -1,4 +1,5 @@
-const {Thought}= require ('../models')
+const {Thought, Reaction}= require ('../models')
+
 
 
 module.exports={
@@ -71,38 +72,59 @@ module.exports={
   //Create a reaction
   createReaction(req,res){
     console.log('you added a reaction');
-    Thought.findByIdAndUpdate(
-      req.params.thoughtId
+    let thoughtId= req.body.thoughtId
+    delete req.body.thoughtId
+    Reaction.create(req.body)
+    .then((reactionData)=>{
+      Thought.findByIdAndUpdate(
+        thoughtId,
+        { $addToSet: { reactions: reactionData } },
+      { runValidators: true, new: true }
+        )
+      .then((dbThoughtData)=>
+      !dbThoughtData
+      ? res
+      .status(404)
+      .json({ message: 'No thought found with that ID :(' })
+            : res.json(dbThoughtData)
       )
-    .then((dbThoughtData)=>
-    !dbThoughtData
-    ? res
-    .status(404)
-    .json({ message: 'No thought found with that ID :(' })
-          : res.json(dbThoughtData)
-    )
-    .catch((err)=>{
-     console.log(err);
-     res.status(500).json(err)
-  });
+      .catch((err)=>{
+       console.log(err);
+       res.status(500).json(err)
+    });
+
+    })
+    .catch((err)=>res.status(500).json(err))
+    
  },
 
  //Delete a reaction
  deleteReaction(req, res) {
-  console.log('you deleted a reaction');
-  Thought.findByIdAndDelete(
-    req.params.thoughtId,
-  )
-    .then((dbThoughtData) =>
-      !dbThoughtData
-        ? res.status(404)
-        .json({ message: 'No reaction with that ID' })
-      : res.json(dbThoughtData)
-    )
-    .catch((err) => {
-      console.log(err)
-      res.status(500).json(err)
-    });
+  console.log('you deleted a reaction',JSON.stringify(req.body));
+  return res.json ({message: "OK"})
+  // Thought.findByIdAndUpdate(
+  //   req.body.thoughtId,
+  //   {$pull:{reactions:{_id: req.body.reactionId}}}
+  // )
+  //   .then((dbThoughtData) =>{
+  //     if(!dbThoughtData)
+  //       res.status(404)
+  //         .json({ message: 'No reaction with that ID' })
+  //     Reaction.findByIdAndDelete(req.body.reactionId)
+  //       .then((reactionData)=>
+  //         reactionData ? res.json({message:"reaction successfully deleted!"}): res.status(404).json({message:"no reaction with that id"})
+  //       )
+  //       .catch((err) => {
+  //         console.log(err)
+  //         res.status(500).json(err)
+  //       });
+  //   }
+      
+  //   )
+  //   .catch((err) => {
+  //     console.log(err)
+  //     res.status(500).json(err)
+  //   });
 },
 
 
