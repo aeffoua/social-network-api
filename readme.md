@@ -57,7 +57,7 @@ Use these routes in Insomnia
 Note: Please add the correct reactionid and friendid when testing POST/DELETE routes for Friends and Reactions
 
 ## Tests
-Go to Insomnia to test the app and seeb how it works. 
+Go to Insomnia to test the app and see how it works. 
 
 
 
