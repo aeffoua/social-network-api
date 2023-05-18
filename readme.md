@@ -2,7 +2,7 @@
 
 
 ## Description
-- This app is a social network API that uses a NoSQ database.
+- This app is a social network API that uses a NoSQL database.
 
 - On this app, users can add other users as friends, 
 share their thought and allow otheir friends to react to their thoughts. 
@@ -16,28 +16,48 @@ share their thought and allow otheir friends to react to their thoughts.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Tests](#tests)
+- [Questions](#Questions)
 - [Mock-Up](#mock-up)
 
+
 ## Technologies
-None.
+
+- [Express.js](#Express.js)
+- [MongoDB](#MongoDB)
+- [Mongoose](#Mongoose)
+- [Node.js](#Nodejs)
+- [Insomnia](#Insomnia)
 
 
 
 ## Installation
 - Once you are ready to use the application, open your terminal,
+-run "npm i"
 -run "npm start"
 -once the server is connected, 
--open Insomnia, click 
+-open Insomnia, and add the following routes:
 
 ## Usage
+Use these routes in Insomnia 
 
 
+- GET/POST Users and Thoughts
+    `http://localhost:3001/api/users/`
 
-## License
-None.
+    `http://localhost:3001/api/thoughts/`
+
+    (Add Id number to find user or thought by Id)
+
+- PUT/DELETE Users and Thoughts
+
+  `http://localhost:3001/api/users/:userid`
+
+  `http://localhost:3001/api/thoughts/:thoughtid`
+
+Note: Please add the correct reactionid and friendid when testing POST/DELETE routes for Friends and Reactions
 
 ## Tests
-Go to Insomni to test the app and seeb how it works. 
+Go to Insomnia to test the app and seeb how it works. 
 
 
 
