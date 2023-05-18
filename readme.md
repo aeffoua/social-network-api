@@ -65,3 +65,28 @@ Go to Insomnia to test the app and seeb how it works.
 If you have any questions about the repo, open an issue or contact me directly at carineeffoua@gmail.com. You can find more of my work at [https://github.com/aeffoua](https://github.com/aeffoua).
 
 ## Mock-Up
+
+
+
+
+https://github.com/aeffoua/social-network-api/assets/119564199/011bfcb6-33eb-4c07-89ba-f5538a54db6d
+
+
+
+
+
+
+https://github.com/aeffoua/social-network-api/assets/119564199/85d25583-6d8f-4865-93cc-93d6525027ba
+
+
+
+
+
+
+
+
+
+
+
+
+
